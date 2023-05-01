@@ -1,0 +1,11 @@
+filebeat.inputs:
+- type: log
+  paths:
+    - /var/log/nginx/access.log
+  fields:
+    log_type: nginx_access
+  fields_under_root: true
+
+output.elasticsearch:
+  hosts: ["localhost:9200"]
+  index: "nginx-access-%{+yyyy.MM.dd}"
